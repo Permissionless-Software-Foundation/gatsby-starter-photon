@@ -235,6 +235,11 @@ class Header extends React.Component {
       usdPerBCH: 200,
       bchBalance: 27.6292729518912,
       tokenBalance: 500,
+      xData: xData,
+      yData1: yData1,
+      yData2: yData2,
+      chartOptions: options,
+      chartData: data
     }
   }
 
@@ -245,7 +250,7 @@ class Header extends React.Component {
           <div className="col-7">
             <div>
               <h2>App Exchange Rate & Balances</h2>
-              <Line data={data} options={options} />
+              <Line data={this.state.chartData} options={this.state.chartOptions} />
             </div>
           </div>
 
@@ -273,14 +278,19 @@ class Header extends React.Component {
 
     // Get the best chart values to use.
     const {bestX, bestY} = this.getBestChartValues()
-
-    // Update the chart
     console.log(`{x, y}: {${bestX}, ${bestY}}`)
+
     data.datasets[2].data[0].x = bestX
     data.datasets[2].data[0].y = bestY
+
+    // Update the chart
+    this.setState(prevState => ({
+      chartData: data
+    }))
+
   }
 
-  getPrice = async () => {
+  async getPrice () {
     const resp = await fetch(`${SERVER}/price`)
     const body = await resp.json()
 
@@ -298,7 +308,7 @@ class Header extends React.Component {
   }
 
   // Find the best x-y coordinates to use based on the real price.
-  getBestChartValues = () => {
+  getBestChartValues() {
     // Find the best x value.
     const x = this.state.tokenBalance - 5000
     var curr = xData[0];
