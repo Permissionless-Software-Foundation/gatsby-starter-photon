@@ -6,6 +6,23 @@ const initialState = {
   labels: initChartData.xData,
   datasets: [
     {
+      type: 'bubble',
+      label: 'Current Price',
+      data: [
+        {
+          x: 10000,
+          y: 1,
+          r: 5
+        },
+      ],
+      fill: false,
+      borderColor: 'red',
+      backgroundColor: 'red',
+      yAxisID: 'B',
+      //xAxisID: 'deltaToken'
+      //pointRadius: 10,
+    },
+    {
       type: 'line',
       label: 'BCH/Token Exchange Rate',
       fill: false,
@@ -23,11 +40,11 @@ const initialState = {
       pointHoverBackgroundColor: 'rgba(75,192,192,1)',
       pointHoverBorderColor: 'rgba(220,220,220,1)',
       pointHoverBorderWidth: 2,
-      pointRadius: 1,
+      pointRadius: 0,
       pointHitRadius: 10,
-      //data: [65, 59, 80, 81, 56, 55, 40],
       data: initChartData.yData1,
       yAxisID: 'A',
+      showLine: false
     },
     {
       type: 'line',
@@ -53,26 +70,7 @@ const initialState = {
       data: initChartData.yData2,
       yAxisID: 'B',
     },
-    {
-      type: 'scatter',
-      label: 'Current Price',
-      data: [
-        {
-          x: 10000,
-          y: 1,
-        },
-        {
-          x: 10000,
-          y: 1.1,
-        },
-      ],
-      fill: false,
-      borderColor: 'red',
-      backgroundColor: 'red',
-      yAxisID: 'B',
-      //xAxisID: 'deltaToken'
-      pointRadius: 5,
-    },
+
   ],
 }
 
@@ -137,43 +135,26 @@ class PriceChart extends React.Component {
     var _this = this
 
     setInterval(function() {
-      //var oldDataSet = _this.state.chartData.datasets[0]
-      var oldDataSet = _this.state.chartData.datasets[2]
+      var oldDataSet = _this.state.chartData.datasets[1]
       var newData = []
 
       const newIndex = Math.floor(Math.abs(Math.random()*10))
       let newX = initChartData.xData[newIndex]
       let newY = initChartData.yData2[newIndex]
 
-      //for (var x = 0; x < _this.state.chartData.labels.length; x++) {
-      //  newData.push(Math.floor(Math.random() * 100))
-      //}
-      //let newState = _this.state.chartData
-      //newState.datasets[0].data = newData
-
-      //var newDataSet = {
-      //  ...oldDataSet,
-      //}
-
-      //newDataSet.data = newData
-
-      //var newState = {
-      //  ...initialState,
-      //  datasets: [newDataSet],
-      //}
+      for (var x = 0; x < _this.state.chartData.labels.length; x++) {
+        newData.push(Math.floor(Math.random() * 100))
+      }
       let newState = _this.state.chartData
-      newState.datasets[2].data[0] = {x: newX, y: newY}
-      newState.datasets[2].data[1] = {x: newX, y: newY+0.1}
-      //newState.datasets[0].data[0] = newX
-      //newState.datasets[0].data[0] = newY
+      newState.datasets[1].data = newData
 
-      //_this.setState(newState)
+      newState.datasets[0].data[0] = {x: newX, y: newY, r: 5}
 
       _this.setState(prevState => ({
         chartData: newState
       }))
 
-      window.tempdata = _this.state
+      //window.tempdata = _this.state
       //window.tempdata.chartData.datasets[2].data[0]
     }, 5000)
   }
