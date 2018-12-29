@@ -1,9 +1,14 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
+import styled from 'styled-components'
 
 import PriceChart from "./price-chart"
 
 const SERVER = 'http://localhost:5000'
+
+const PriceP = styled.p`
+  text-align: left;
+`
 
 class Header extends React.Component {
   constructor(props) {
@@ -28,12 +33,12 @@ class Header extends React.Component {
           </div>
 
           <div className="col-5">
-            <p>
+            <PriceP>
               <u>Price:</u><br />
-              ${this.state.usdPerToken} per Token<br />
-              {this.state.bchBalance/this.state.tokenBalance} BCH per token<br />
-              {this.state.tokenBalance/this.state.bchBalance} tokens per BCH
-            </p>
+              ${this.round3(this.state.usdPerToken)} per Token<br />
+              {this.round8(this.state.usdPerToken/this.state.usdPerBCH)} BCH per token<br />
+              {this.round8(this.state.usdPerBCH/this.state.usdPerToken)} tokens per BCH
+            </PriceP>
           </div>
         </div>
         <div className="inner">
@@ -71,6 +76,15 @@ class Header extends React.Component {
     console.log(`usdPerBCH: ${this.state.usdPerBCH}`)
     console.log(`bchBalance: ${this.state.bchBalance}`)
     console.log(`tokenBalance: ${this.state.tokenBalance}`)
+  }
+
+  // Round a number to 8 decimal places, the standard used for Bitcoin.
+  round8 (numIn) {
+    return Math.floor(numIn * 100000000) / 100000000
+  }
+
+  round3 (numIn) {
+    return Math.floor(numIn * 1000) / 1000
   }
 }
 
