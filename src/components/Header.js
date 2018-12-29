@@ -1,36 +1,37 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
+const SERVER = 'http://localhost:5000'
 
 const xData = [
-  -10000,
-  -5000,
-  -4500,
-  -4000,
-  -3500,
-  -3000,
-  -2500,
-  -2000,
-  -1500,
-  -1000,
-  -500,
   0,
-  500,
-  1000,
-  1500,
-  2000,
-  2500,
-  3000,
-  3500,
-  4000,
-  4500,
   5000,
   5500,
+  6000,
   6500,
+  7000,
   7500,
+  8000,
   8500,
+  9000,
   9500,
   10000,
+  10500,
+  11000,
+  11500,
+  12000,
+  12500,
+  13000,
+  13500,
+  14000,
+  14500,
+  15000,
+  15500,
+  16500,
+  17500,
+  18500,
+  19500,
+  20000,
 ]
 
 const yData1 = [
@@ -152,33 +153,35 @@ const data = {
     {
       type: 'scatter',
       label: 'Current Price',
-      data: [{
-          x: 500,
-          y: 1.1
-      }],
+      data: [
+        {
+          x: 10000,
+          y: 1,
+        },
+      ],
       fill: false,
       borderColor: 'red',
-			backgroundColor: 'red',
+      backgroundColor: 'red',
       yAxisID: 'B',
       //xAxisID: 'deltaToken'
+      pointRadius: 5,
     },
   ],
 }
 
-
 const options = {
   scales: {
     title: {
-      text: "Change in app token balance"
+      text: 'Change in app token balance',
     },
     xAxes: [
       {
         id: 'deltaToken',
         scaleLabel: {
-          labelString: 'Change in Token Balance',
-          display: true
-        }
-      }
+          labelString: 'Token Balance',
+          display: true,
+        },
+      },
     ],
     yAxes: [
       {
@@ -204,14 +207,15 @@ const options = {
     tooltips: {
       position: 'nearest',
       mode: 'index',
-      intersect: false
-    }
+      intersect: false,
+    },
   },
   legend: {
-    display: false
-  }
+    display: false,
+  },
 }
 
+/*
 const plugins = [{
     afterDraw: (chartInstance, easing) => {
         const ctx = chartInstance.chart.ctx;
@@ -221,8 +225,19 @@ const plugins = [{
         ctx.fillText("*", 300, 100)
     }
 }];
+*/
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      usdPerToken: 1.1,
+      usdPerBCH: 200,
+      bchBalance: 27.6292729518912,
+      tokenBalance: 500,
+    }
+  }
+
   render() {
     return (
       <section id="header">
@@ -230,11 +245,13 @@ class Header extends React.Component {
           <div className="col-7">
             <div>
               <h2>App Exchange Rate & Balances</h2>
-              <Line data={data} options={options} plugins={plugins} />
+              <Line data={data} options={options} />
             </div>
           </div>
 
-          <div className="col-5" />
+          <div className="col-5">
+            <p>Price: {this.state.usdPerToken}</p>
+          </div>
         </div>
         <div className="inner">
           <ul className="actions">
@@ -247,6 +264,38 @@ class Header extends React.Component {
         </div>
       </section>
     )
+  }
+
+  // React Lifecycle - component has mounted.
+  componentDidMount() {
+    // Update the component state with token price from the server.
+    this.getPrice()
+
+    // Get the best chart values to use.
+    const {x, y} = this.getBestChartValues()
+
+    // Update the chart
+  }
+
+  getPrice = async () => {
+    const resp = await fetch(`${SERVER}/price`)
+    const body = await resp.json()
+
+    this.setState(prevState => ({
+      usdPerToken: body.usdPerToken,
+      usdPerBCH: body.usdPerBCH,
+      bchBalance: body.bchBalance,
+      tokenBalance: body.tokenBalance,
+    }))
+
+    console.log(`usdPerToken: ${this.state.usdPerToken}`)
+    console.log(`usdPerBCH: ${this.state.usdPerBCH}`)
+    console.log(`bchBalance: ${this.state.bchBalance}`)
+    console.log(`tokenBalance: ${this.state.tokenBalance}`)
+  }
+
+  getBestChartValues = () => {
+    
   }
 }
 
