@@ -55,7 +55,9 @@ const initialState = {
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',
-      borderColor: 'rgba(75,192,192,1)',
+      //borderColor: 'rgba(75,192,192,1)',
+      borderColor: 'rgba(75,1,1,1)',
+      //borderColor: 'rgba(254,254,254,1)',
       borderCapStyle: 'butt',
       borderDash: [],
       borderDashOffset: 0.0,
@@ -88,6 +90,8 @@ const options = {
         scaleLabel: {
           labelString: 'Token Balance',
           display: true,
+          fontColor: 'rgba(0,0,0,1)',
+          fontSize: 24,
         },
       },
     ],
@@ -97,9 +101,15 @@ const options = {
         type: 'linear',
         position: 'left',
         scaleLabel: {
-          labelString: '$/Token',
+          labelString: '$ / Token',
           display: true,
+          fontColor: 'rgba(254,254,254,1)',
+          fontSize: 24,
         },
+        gridLines: {
+          color: 'rgba(254,254,254,1)'
+        }
+
       },
       {
         id: 'A',
@@ -108,7 +118,12 @@ const options = {
         scaleLabel: {
           labelString: 'BCH Balance',
           display: true,
+          fontColor: 'rgba(51,26,68,1)',
+          fontSize: 24,
         },
+        gridLines: {
+          color: 'rgba(51,26,68,1)'
+        }
       },
     ],
     responseive: true,
