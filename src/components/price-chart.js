@@ -20,13 +20,14 @@ const initialState = {
       fill: false,
       borderColor: 'red',
       backgroundColor: 'red',
-      yAxisID: 'B',
+      yAxisID: 'A',
       //xAxisID: 'deltaToken'
       //pointRadius: 10,
     },
     {
+      // BCH/Token Exchange Rate
       type: 'line',
-      label: 'BCH/Token Exchange Rate',
+      label: 'n-a1',
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',
@@ -46,12 +47,13 @@ const initialState = {
       //pointRadius: 1,
       pointHitRadius: 10,
       data: initChartData.yData1,
-      yAxisID: 'A',
+      yAxisID: 'B',
       showLine: false
     },
     {
+      // $/Token Exchange Rate
       type: 'line',
-      label: '$/Token Exchange Rate',
+      label: 'n-a2',
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',
@@ -73,9 +75,25 @@ const initialState = {
       pointHitRadius: 10,
       //data: [65, 59, 80, 81, 56, 55, 40],
       data: initChartData.yData2,
-      yAxisID: 'B',
+      yAxisID: 'A',
     },
-
+    {
+      type: 'bubble',
+      label: 'Target Stable Price',
+      data: [
+        {
+          x: -5000,
+          y: 1,
+          r: 5
+        },
+      ],
+      fill: false,
+      borderColor: 'black',
+      backgroundColor: 'black',
+      yAxisID: 'A',
+      //xAxisID: 'deltaToken'
+      //pointRadius: 10,
+    },
   ],
 }
 
@@ -97,7 +115,7 @@ const options = {
     ],
     yAxes: [
       {
-        id: 'B',
+        id: 'A',
         type: 'linear',
         position: 'left',
         scaleLabel: {
@@ -112,7 +130,7 @@ const options = {
 
       },
       {
-        id: 'A',
+        id: 'B',
         type: 'linear',
         position: 'right',
         scaleLabel: {
@@ -133,8 +151,14 @@ const options = {
       intersect: false,
     },
   },
+  // https://stackoverflow.com/questions/47084144/is-it-possible-in-chartjs-to-hide-certain-dataset-legends
   legend: {
-    display: false,
+    labels: {
+      //display: false,
+      filter: function(item, chart) {
+        return !item.text.includes('n-a')
+      }
+    }
   },
 }
 
