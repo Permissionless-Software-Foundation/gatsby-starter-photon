@@ -61,6 +61,10 @@ const initialState = {
           x: 10000,
           y: 1,
         },
+        {
+          x: 10000,
+          y: 1.1,
+        },
       ],
       fill: false,
       borderColor: 'red',
@@ -133,18 +137,19 @@ class PriceChart extends React.Component {
     var _this = this
 
     setInterval(function() {
-      var oldDataSet = _this.state.chartData.datasets[0]
+      //var oldDataSet = _this.state.chartData.datasets[0]
+      var oldDataSet = _this.state.chartData.datasets[2]
       var newData = []
 
-      //const newIndex = Math.floor(Math.abs(Math.random()*10))
-      //let newX = initChartData.xData[newIndex]
-      //let newY = initChartData.yData2[newIndex]
+      const newIndex = Math.floor(Math.abs(Math.random()*10))
+      let newX = initChartData.xData[newIndex]
+      let newY = initChartData.yData2[newIndex]
 
-      for (var x = 0; x < _this.state.chartData.labels.length; x++) {
-        newData.push(Math.floor(Math.random() * 100))
-      }
-      let newState = _this.state.chartData
-      newState.datasets[0].data = newData
+      //for (var x = 0; x < _this.state.chartData.labels.length; x++) {
+      //  newData.push(Math.floor(Math.random() * 100))
+      //}
+      //let newState = _this.state.chartData
+      //newState.datasets[0].data = newData
 
       //var newDataSet = {
       //  ...oldDataSet,
@@ -156,9 +161,9 @@ class PriceChart extends React.Component {
       //  ...initialState,
       //  datasets: [newDataSet],
       //}
-      //let newState = _this.state.chartData
-      //newState.datasets[2].data[0].x = newX
-      //newState.datasets[2].data[0].y = newY
+      let newState = _this.state.chartData
+      newState.datasets[2].data[0] = {x: newX, y: newY}
+      newState.datasets[2].data[1] = {x: newX, y: newY+0.1}
       //newState.datasets[0].data[0] = newX
       //newState.datasets[0].data[0] = newY
 
