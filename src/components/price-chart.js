@@ -5,7 +5,7 @@ import initChartData from './init-chart-data.js'
 const SERVER = 'http://localhost:5000'
 
 const initialState = {
-  labels: initChartData.xData,
+  labels: initChartData.xData2,
   datasets: [
     {
       type: 'bubble',
@@ -149,7 +149,7 @@ class PriceChart extends React.Component {
       var newData = []
 
       const newIndex = Math.floor(Math.abs(Math.random()*10))
-      let newX = initChartData.xData[newIndex]
+      let newX = initChartData.xData2[newIndex]
       let newY = initChartData.yData2[newIndex]
 
       for (var x = 0; x < _this.state.chartData.labels.length; x++) {
@@ -191,20 +191,20 @@ class PriceChart extends React.Component {
   // Find the best x-y coordinates to use based on the real price.
   getBestChartValues() {
     // Find the best x value.
-    const x = this.state.tokenBalance - 5000
-    var curr = initChartData.xData[0];
+    const x = -1*this.state.tokenBalance
+    var curr = initChartData.xData2[0];
     var diff = Math.abs (x - curr);
-    for (var val = 0; val < initChartData.xData.length; val++) {
-        var newdiff = Math.abs (x - initChartData.xData[val])
+    for (var val = 0; val < initChartData.xData2.length; val++) {
+        var newdiff = Math.abs (x - initChartData.xData2[val])
         if (newdiff < diff) {
             diff = newdiff
-            curr = initChartData.xData[val]
+            curr = initChartData.xData2[val]
         }
     }
     const bestX = curr
     console.log(`bestX: ${bestX}`)
 
-    const index = initChartData.xData.indexOf(bestX)
+    const index = initChartData.xData2.indexOf(bestX)
     const bestY = initChartData.yData2[index]
     console.log(`bestY: ${bestY}`)
 /*
