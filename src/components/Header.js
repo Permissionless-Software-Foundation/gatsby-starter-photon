@@ -267,14 +267,17 @@ class Header extends React.Component {
   }
 
   // React Lifecycle - component has mounted.
-  componentDidMount() {
+  async componentDidMount() {
     // Update the component state with token price from the server.
-    this.getPrice()
+    await this.getPrice()
 
     // Get the best chart values to use.
-    const {x, y} = this.getBestChartValues()
+    const {bestX, bestY} = this.getBestChartValues()
 
     // Update the chart
+    console.log(`{x, y}: {${bestX}, ${bestY}}`)
+    data.datasets[2].data[0].x = bestX
+    data.datasets[2].data[0].y = bestY
   }
 
   getPrice = async () => {
@@ -294,8 +297,37 @@ class Header extends React.Component {
     console.log(`tokenBalance: ${this.state.tokenBalance}`)
   }
 
+  // Find the best x-y coordinates to use based on the real price.
   getBestChartValues = () => {
-    
+    // Find the best x value.
+    const x = this.state.tokenBalance - 5000
+    var curr = xData[0];
+    var diff = Math.abs (x - curr);
+    for (var val = 0; val < xData.length; val++) {
+        var newdiff = Math.abs (x - xData[val])
+        if (newdiff < diff) {
+            diff = newdiff
+            curr = xData[val]
+        }
+    }
+    const bestX = curr
+    console.log(`bestX: ${bestX}`)
+
+    // Find the best y value.
+    const y = this.state.usdPerToken
+    var curr = yData2[0];
+    var diff = Math.abs (y - curr);
+    for (var val = 0; val < yData2.length; val++) {
+        var newdiff = Math.abs (y - yData2[val])
+        if (newdiff < diff) {
+            diff = newdiff
+            curr = yData2[val]
+        }
+    }
+    const bestY = curr
+    console.log(`bestY: ${bestY}`)
+
+    return {bestX, bestY}
   }
 }
 
