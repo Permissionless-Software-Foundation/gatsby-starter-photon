@@ -1,6 +1,9 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
+import TempChart from "./temp-chart"
+import PriceChart from "./price-chart"
+
 const SERVER = 'http://localhost:5000'
 
 const xData = [
@@ -256,6 +259,8 @@ class Header extends React.Component {
 
           <div className="col-5">
             <p>Price: {this.state.usdPerToken}</p>
+            <TempChart />
+            <PriceChart />
           </div>
         </div>
         <div className="inner">
@@ -282,11 +287,14 @@ class Header extends React.Component {
 
     data.datasets[2].data[0].x = bestX
     data.datasets[2].data[0].y = bestY
+    //console.log(`data.datasets[2]: ${JSON.stringify(data.datasets[2],null,2)}`)
+    window.testdata = data.datasets[2]
 
     // Update the chart
     this.setState(prevState => ({
       chartData: data
     }))
+    this.render()
 
   }
 
