@@ -1,10 +1,8 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
+
 const xData = [
-  -25000,
-  -20000,
-  -15000,
   -10000,
   -5000,
   -4500,
@@ -33,15 +31,9 @@ const xData = [
   8500,
   9500,
   10000,
-  12500,
-  15000,
-  20000,
 ]
 
-const yData = [
-  0.168448674977137,
-  0.457890972218354,
-  1.2446767091966,
+const yData1 = [
   3.38338208091532,
   9.19698602928606,
   10.164241493515,
@@ -70,17 +62,48 @@ const yData = [
   136.84868479318,
   167.147361056982,
   184.726402473266,
-  304.562349017587,
-  502.138423079692,
-  1364.95375082861,
 ]
+
+const yData2 = [
+  0.135335283236613,
+  0.367879441171442,
+  0.4065696597406,
+  0.44932896411722,
+  0.496585303791408,
+  0.548811636094028,
+  0.606530659712632,
+  0.67032004603564,
+  0.740818220681716,
+  0.81873075307798,
+  0.90483741803596,
+  1,
+  1.10517091807565,
+  1.22140275816017,
+  1.349858807576,
+  1.49182469764127,
+  1.64872127070013,
+  1.82211880039051,
+  2.01375270747048,
+  2.22554092849247,
+  2.45960311115695,
+  2.71828182845904,
+  3.00416602394643,
+  3.66929666761924,
+  4.48168907033808,
+  5.4739473917272,
+  6.68589444227928,
+  7.38905609893064,
+]
+
+const point = [1]
 
 const data = {
   //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   labels: xData,
   datasets: [
     {
-      label: 'My First dataset',
+      type: 'line',
+      label: 'BCH/Token Exchange Rate',
       fill: false,
       lineTension: 0.1,
       backgroundColor: 'rgba(75,192,192,0.4)',
@@ -99,23 +122,119 @@ const data = {
       pointRadius: 1,
       pointHitRadius: 10,
       //data: [65, 59, 80, 81, 56, 55, 40],
-      data: yData
+      data: yData1,
+      yAxisID: 'A',
+    },
+    {
+      type: 'line',
+      label: '$/Token Exchange Rate',
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: 'rgba(75,192,192,0.4)',
+      borderColor: 'rgba(75,192,192,1)',
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: 'rgba(75,192,192,1)',
+      pointBackgroundColor: '#fff',
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+      pointHoverBorderColor: 'rgba(220,220,220,1)',
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      //data: [65, 59, 80, 81, 56, 55, 40],
+      data: yData2,
+      yAxisID: 'B',
+    },
+    {
+      type: 'scatter',
+      label: 'Current Price',
+      data: [{
+          x: 500,
+          y: 1.1
+      }],
+      fill: false,
+      borderColor: 'red',
+			backgroundColor: 'red',
+      yAxisID: 'B',
+      //xAxisID: 'deltaToken'
     },
   ],
 }
+
+
+const options = {
+  scales: {
+    title: {
+      text: "Change in app token balance"
+    },
+    xAxes: [
+      {
+        id: 'deltaToken',
+        scaleLabel: {
+          labelString: 'Change in Token Balance',
+          display: true
+        }
+      }
+    ],
+    yAxes: [
+      {
+        id: 'B',
+        type: 'linear',
+        position: 'left',
+        scaleLabel: {
+          labelString: '$/Token',
+          display: true,
+        },
+      },
+      {
+        id: 'A',
+        type: 'linear',
+        position: 'right',
+        scaleLabel: {
+          labelString: 'BCH Balance',
+          display: true,
+        },
+      },
+    ],
+    responseive: true,
+    tooltips: {
+      position: 'nearest',
+      mode: 'index',
+      intersect: false
+    }
+  },
+  legend: {
+    display: false
+  }
+}
+
+const plugins = [{
+    afterDraw: (chartInstance, easing) => {
+        const ctx = chartInstance.chart.ctx;
+        console.log(`ctx: ${JSON.stringify(ctx,null,2)}`)
+        window.ctx = ctx
+        ctx.fillText("This text drawn by a plugin", 100, 100)
+        ctx.fillText("*", 300, 100)
+    }
+}];
 
 class Header extends React.Component {
   render() {
     return (
       <section id="header">
         <div className="grid-wrapper">
-          <div className="col-5" />
           <div className="col-7">
             <div>
-              <h2>Line Example</h2>
-              <Line data={data} />
+              <h2>App Exchange Rate & Balances</h2>
+              <Line data={data} options={options} plugins={plugins} />
             </div>
           </div>
+
+          <div className="col-5" />
         </div>
         <div className="inner">
           <ul className="actions">
