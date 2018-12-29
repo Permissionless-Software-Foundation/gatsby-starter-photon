@@ -28,7 +28,12 @@ class Header extends React.Component {
           </div>
 
           <div className="col-5">
-            <p>Price: {this.state.usdPerToken}</p>
+            <p>
+              <u>Price:</u><br />
+              ${this.state.usdPerToken} per Token<br />
+              {this.state.bchBalance/this.state.tokenBalance} BCH per token<br />
+              {this.state.tokenBalance/this.state.bchBalance} tokens per BCH
+            </p>
           </div>
         </div>
         <div className="inner">
@@ -67,7 +72,6 @@ class Header extends React.Component {
     console.log(`bchBalance: ${this.state.bchBalance}`)
     console.log(`tokenBalance: ${this.state.tokenBalance}`)
   }
-
 }
 
 export default Header

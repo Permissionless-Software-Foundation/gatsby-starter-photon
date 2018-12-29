@@ -207,21 +207,7 @@ class PriceChart extends React.Component {
     const index = initChartData.xData2.indexOf(bestX)
     const bestY = initChartData.yData2[index]
     console.log(`bestY: ${bestY}`)
-/*
-    // Find the best y value.
-    const y = this.state.usdPerToken
-    var curr = initChartData.yData2[0];
-    var diff = Math.abs (y - curr);
-    for (var val = 0; val < initChartData.yData2.length; val++) {
-        var newdiff = Math.abs (y - initChartData.yData2[val])
-        if (newdiff < diff) {
-            diff = newdiff
-            curr = initChartData.yData2[val]
-        }
-    }
-    const bestY = curr
-    console.log(`bestY: ${bestY}`)
-*/
+
     return {bestX, bestY}
   }
 
