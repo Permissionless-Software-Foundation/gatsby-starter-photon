@@ -1,5 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
+import styled from 'styled-components'
 
 import Layout from '../components/layout';
 
@@ -9,6 +10,11 @@ import pic03 from '../assets/images/pic03.jpg'
 import pic04 from '../assets/images/pic04.jpg'
 import qrcode from '../assets/images/qrcode.png'
 
+const BchAddress = styled.p`
+  text-align: center;
+  font-size: 18px;
+`
+
 class Homepage extends React.Component {
     render() {
         const siteTitle = "Permissionless Software Foundation";
@@ -16,7 +22,6 @@ class Homepage extends React.Component {
         return (
             <Layout>
                 <Helmet title={siteTitle} />
-
                 <section id="one" className="main style1">
                     <div className="grid-wrapper">
                         <div className="col-6">
@@ -66,9 +71,9 @@ class Homepage extends React.Component {
                             <span className="image">
                               <img src={qrcode} alt="" />
                             </span>
-                            <p>
+                            <BchAddress>
                               bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al
-                            </p>
+                            </BchAddress>
                           </center>
                         </div>
                         <div className="col-6">
