@@ -8,6 +8,11 @@ const SERVER = 'http://localhost:5000'
 
 const PriceP = styled.p`
   text-align: left;
+  font-size: 24px;
+`
+
+const Span1 = styled.span`
+  color: #000000;
 `
 
 class Header extends React.Component {
@@ -34,10 +39,10 @@ class Header extends React.Component {
 
           <div className="col-5">
             <PriceP>
-              <u>Price:</u><br />
-              ${this.round3(this.state.usdPerToken)} per Token<br />
-              {this.round8(this.state.usdPerToken/this.state.usdPerBCH)} BCH per token<br />
-              {this.round8(this.state.usdPerBCH/this.state.usdPerToken)} tokens per BCH
+              <u>Current PSF Token Price:</u><br />
+              ${this.round3(this.state.usdPerToken)} <Span1>USD per Token</Span1><br />
+              {this.round8(this.state.usdPerToken/this.state.usdPerBCH)} <Span1>BCH per token</Span1><br />
+              {this.round8(this.state.usdPerBCH/this.state.usdPerToken)} <Span1>tokens per BCH</Span1><br />
             </PriceP>
           </div>
         </div>
@@ -45,7 +50,7 @@ class Header extends React.Component {
           <ul className="actions">
             <li>
               <a href="#one" className="button scrolly">
-                Found Out More!
+                Find Out More!
               </a>
             </li>
           </ul>
