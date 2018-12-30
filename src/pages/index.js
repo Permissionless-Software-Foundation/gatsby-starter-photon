@@ -10,7 +10,7 @@ import pic04 from '../assets/images/pic04.jpg'
 
 class Homepage extends React.Component {
     render() {
-        const siteTitle = "Gatsby Starter - Photon";
+        const siteTitle = "Permissionless Software Foundation";
 
         return (
             <Layout>
@@ -20,13 +20,37 @@ class Homepage extends React.Component {
                     <div className="grid-wrapper">
                         <div className="col-6">
                             <header className="major">
-                                <h2>Lorem ipsum dolor adipiscing<br />
-                                amet dolor consequat</h2>
+                                <h2>
+                                  Permissionless<br />
+                                  &nbsp;Software<br />
+                                  &nbsp;&nbsp;Foundation
+                                </h2>
                             </header>
-                            <p>Adipiscing a commodo ante nunc accumsan et interdum mi ante adipiscing. A nunc lobortis non nisl amet vis sed volutpat aclacus nascetur ac non. Lorem curae et ante amet sapien sed tempus adipiscing id accumsan.</p>
+                            <p>
+                              The mission of the Permissionless Software
+                              Foundation is to promote individual sovereignty
+                              through the use of software. The Foundation will
+                              focus on the development and promotion of software
+                              that makes it easy for individuals to protect
+                              their privacy, circumvent censorship, and engage
+                              in <a href="https://en.wikipedia.org/wiki/Agorism" target="_blank">Agorism</a>.
+                            </p>
                         </div>
                         <div className="col-6">
-                            <span className="image fit"><img src={pic01} alt="" /></span>
+                          <center>
+                            <p>
+                              The business plan for the Permissionless Softare Foundation
+                              and PSF token is still being drafted. You can read the
+                              current draft by clicking on the button below. It discusses
+                              the unique token economics and mathematics used to create a
+                              psudo-stable utility token allowing open source software
+                              communities to self-fund without the need for venture capital,
+                              corporate sponshorship, or other fiduciary responsibility.
+                            </p>
+                            <a href="https://docs.google.com/document/d/1UgX_h4TB9CtxxabseC7lRGwQlCsNikPo7DJUlIrNv0k/edit?usp=sharing" target="_blank" className="button special">
+                              Read the Business Plan
+                            </a>
+                          </center>
                         </div>
                     </div>
                 </section>
