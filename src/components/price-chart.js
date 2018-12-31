@@ -225,6 +225,9 @@ class PriceChart extends React.Component {
     console.log(`usdPerBCH: ${this.state.usdPerBCH}`)
     console.log(`bchBalance: ${this.state.bchBalance}`)
     console.log(`tokenBalance: ${this.state.tokenBalance}`)
+
+    // Add BCH price to window object, so it can be used by Badger Button
+    window.usdPerBCH = this.state.usdPerBCH
   }
 
   // Find the best x-y coordinates to use based on the real price.

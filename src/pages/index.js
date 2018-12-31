@@ -1,8 +1,9 @@
-import React from "react";
-import Helmet from "react-helmet";
+import React from "react"
+import Helmet from "react-helmet"
 import styled from 'styled-components'
 
-import Layout from '../components/layout';
+import Layout from '../components/layout'
+import BadgerButton from '../components/badger-button'
 
 import pic01 from '../assets/images/pic01.jpg'
 import pic02 from '../assets/images/pic02.jpg'
@@ -13,6 +14,7 @@ import qrcode from '../assets/images/qrcode.png'
 const BchAddress = styled.p`
   text-align: center;
   font-size: 18px;
+  font-weight: bold;
 `
 
 class Homepage extends React.Component {
@@ -74,6 +76,7 @@ class Homepage extends React.Component {
                             <BchAddress>
                               bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al
                             </BchAddress>
+                            <BadgerButton />
                           </center>
                         </div>
                         <div className="col-6">
