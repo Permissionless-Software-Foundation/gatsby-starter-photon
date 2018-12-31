@@ -12,9 +12,9 @@ const initialState = {
       label: 'Current Price',
       data: [
         {
-          x: 10000,
+          x: -5000,
           y: 1,
-          r: 5
+          r: 5,
         },
       ],
       fill: false,
@@ -48,7 +48,7 @@ const initialState = {
       pointHitRadius: 10,
       data: initChartData.yData1,
       yAxisID: 'B',
-      showLine: false
+      showLine: false,
     },
     {
       // $/Token Exchange Rate
@@ -84,7 +84,7 @@ const initialState = {
         {
           x: -5000,
           y: 1,
-          r: 5
+          r: 5,
         },
       ],
       fill: false,
@@ -125,9 +125,8 @@ const options = {
           fontSize: 24,
         },
         gridLines: {
-          color: 'rgba(254,254,254,1)'
-        }
-
+          color: 'rgba(254,254,254,1)',
+        },
       },
       {
         id: 'B',
@@ -140,8 +139,8 @@ const options = {
           fontSize: 24,
         },
         gridLines: {
-          color: 'rgba(51,26,68,1)'
-        }
+          color: 'rgba(51,26,68,1)',
+        },
       },
     ],
     responseive: true,
@@ -157,8 +156,8 @@ const options = {
       //display: false,
       filter: function(item, chart) {
         return !item.text.includes('n-a')
-      }
-    }
+      },
+    },
   },
 }
 
@@ -169,25 +168,26 @@ class PriceChart extends React.Component {
     //this.setState(initialState)
     this.setState(prevState => ({
       chartData: initialState,
-      chartOptions: options
+      chartOptions: options,
     }))
   }
 
   async componentDidMount() {
-    var _this = this
+    try {
+      var _this = this
 
-    // Update the component state with token price from the server.
-    await this.getPrice()
+      // Update the component state with token price from the server.
+      await this.getPrice()
 
-    // Get the best chart values to use.
-    const {bestX, bestY} = this.getBestChartValues()
-    console.log(`{x, y}: {${bestX}, ${bestY}}`)
+      // Get the best chart values to use.
+      const { bestX, bestY } = this.getBestChartValues()
+      console.log(`{x, y}: {${bestX}, ${bestY}}`)
 
-    //setInterval(function() {
+      //setInterval(function() {
       var oldDataSet = _this.state.chartData.datasets[1]
       var newData = []
 
-      const newIndex = Math.floor(Math.abs(Math.random()*10))
+      const newIndex = Math.floor(Math.abs(Math.random() * 10))
       let newX = initChartData.xData2[newIndex]
       let newY = initChartData.yData2[newIndex]
 
@@ -198,50 +198,58 @@ class PriceChart extends React.Component {
       newState.datasets[1].data = newData
 
       //newState.datasets[0].data[0] = {x: newX, y: newY, r: 5}
-      newState.datasets[0].data[0] = {x: bestX, y: bestY, r: 5}
+      newState.datasets[0].data[0] = { x: bestX, y: bestY, r: 5 }
 
       _this.setState(prevState => ({
-        chartData: newState
+        chartData: newState,
       }))
 
       window.tempdata = _this.state
       //window.tempdata.chartData.datasets[2].data[0]
-    //}, 5000)
+      //}, 5000)
+    } catch (err) {
+      console.log(`Error trying to update price chart: `, err)
+    }
   }
 
   // Get the current price from the server.
-  async getPrice () {
-    const resp = await fetch(`${SERVER}/price`)
-    const body = await resp.json()
+  async getPrice() {
+    try {
+      const resp = await fetch(`${SERVER}/price`)
+      const body = await resp.json()
 
-    this.setState(prevState => ({
-      usdPerToken: body.usdPerToken,
-      usdPerBCH: body.usdPerBCH,
-      bchBalance: body.bchBalance,
-      tokenBalance: body.tokenBalance,
-    }))
+      this.setState(prevState => ({
+        usdPerToken: body.usdPerToken,
+        usdPerBCH: body.usdPerBCH,
+        bchBalance: body.bchBalance,
+        tokenBalance: body.tokenBalance,
+      }))
 
-    console.log(`usdPerToken: ${this.state.usdPerToken}`)
-    console.log(`usdPerBCH: ${this.state.usdPerBCH}`)
-    console.log(`bchBalance: ${this.state.bchBalance}`)
-    console.log(`tokenBalance: ${this.state.tokenBalance}`)
+      console.log(`usdPerToken: ${this.state.usdPerToken}`)
+      console.log(`usdPerBCH: ${this.state.usdPerBCH}`)
+      console.log(`bchBalance: ${this.state.bchBalance}`)
+      console.log(`tokenBalance: ${this.state.tokenBalance}`)
 
-    // Add BCH price to window object, so it can be used by Badger Button
-    window.usdPerBCH = this.state.usdPerBCH
+      // Add BCH price to window object, so it can be used by Badger Button
+      window.usdPerBCH = this.state.usdPerBCH
+    } catch (err) {
+      console.error(`Error in getPrice().`)
+      throw err
+    }
   }
 
   // Find the best x-y coordinates to use based on the real price.
   getBestChartValues() {
     // Find the best x value.
-    const x = -1*this.state.tokenBalance
-    var curr = initChartData.xData2[0];
-    var diff = Math.abs (x - curr);
+    const x = -1 * this.state.tokenBalance
+    var curr = initChartData.xData2[0]
+    var diff = Math.abs(x - curr)
     for (var val = 0; val < initChartData.xData2.length; val++) {
-        var newdiff = Math.abs (x - initChartData.xData2[val])
-        if (newdiff < diff) {
-            diff = newdiff
-            curr = initChartData.xData2[val]
-        }
+      var newdiff = Math.abs(x - initChartData.xData2[val])
+      if (newdiff < diff) {
+        diff = newdiff
+        curr = initChartData.xData2[val]
+      }
     }
     const bestX = curr
     console.log(`bestX: ${bestX}`)
@@ -250,12 +258,13 @@ class PriceChart extends React.Component {
     const bestY = initChartData.yData2[index]
     console.log(`bestY: ${bestY}`)
 
-    return {bestX, bestY}
+    return { bestX, bestY }
   }
 
-
   render() {
-    return <Line data={this.state.chartData} options={this.state.chartOptions} />
+    return (
+      <Line data={this.state.chartData} options={this.state.chartOptions} />
+    )
   }
 }
 
