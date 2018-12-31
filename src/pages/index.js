@@ -17,6 +17,10 @@ const BchAddress = styled.p`
   font-weight: bold;
 `
 
+const BizPlanButton = styled.a`
+  margin-bottom: 25px;
+`
+
 class Homepage extends React.Component {
   render() {
     const siteTitle = 'Permissionless Software Foundation'
@@ -66,13 +70,13 @@ class Homepage extends React.Component {
                   self-fund without the need for venture capital, corporate
                   sponshorship, or other fiduciary responsibility.
                 </p>
-                <a
+                <BizPlanButton
                   href="https://docs.google.com/document/d/1UgX_h4TB9CtxxabseC7lRGwQlCsNikPo7DJUlIrNv0k/edit?usp=sharing"
                   target="_blank"
                   className="button special"
                 >
                   Read the Business Plan
-                </a>
+                </BizPlanButton>
               </center>
             </div>
           </div>
@@ -111,10 +115,9 @@ class Homepage extends React.Component {
               <p>
                 The liquidity app will send tokens if it recieves BCH. It will
                 send BCH if it recieves tokens.
-                It will take two (2) block confirmations before your tokens
+                It will take two (2) block confirmations before tokens will
                 appear in your wallet.
-                Refresh the window to get the
-                most up-to-date exchange rate.
+                Refresh the window to get the most up-to-date exchange rate.
               </p>
               <p>
                 <b>

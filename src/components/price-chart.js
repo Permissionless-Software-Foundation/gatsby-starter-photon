@@ -171,6 +171,15 @@ class PriceChart extends React.Component {
       chartData: initialState,
       chartOptions: options,
     }))
+
+    // Adjust chart settings based on screen width.
+    const screenWidth = window.innerWidth
+    console.log(`Window width: ${screenWidth}`)
+    if(screenWidth < 800) {
+      options.scales.xAxes[0].scaleLabel.fontSize = 14
+      options.scales.yAxes[0].scaleLabel.fontSize = 14
+      options.scales.yAxes[1].scaleLabel.fontSize = 14
+    }
   }
 
   async componentDidMount() {
