@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import PriceChart from "./price-chart"
 
 //const SERVER = 'http://localhost:5000'
+const SERVER = 'https://psfoundation.co'
 
 const PriceP = styled.p`
   text-align: left;
@@ -58,7 +59,7 @@ class Header extends React.Component {
       </section>
     )
   }
-/*
+
   // React Lifecycle - component has mounted.
   async componentDidMount() {
     // Update the component state with token price from the server.
@@ -82,7 +83,7 @@ class Header extends React.Component {
     console.log(`bchBalance: ${this.state.bchBalance}`)
     console.log(`tokenBalance: ${this.state.tokenBalance}`)
   }
-*/
+
   // Round a number to 8 decimal places, the standard used for Bitcoin.
   round8 (numIn) {
     return Math.floor(numIn * 100000000) / 100000000
