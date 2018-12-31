@@ -143,7 +143,7 @@ class Homepage extends React.Component {
             </div>
 
             <div className="col-6">
-              <h3>Consolidating CoinJoin</h3>
+              <h3>Anonymous Bitcoin: Consolidating CoinJoin</h3>
               <p>
                 Consolidating CoinJoin is a peer-to-peer mixing service that
                 brings privacy and fungability to the Bitcoin Cash network.
