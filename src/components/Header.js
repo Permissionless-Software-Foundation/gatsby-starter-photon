@@ -40,15 +40,18 @@ class Header extends React.Component {
           <div className="col-5">
             <PriceP>
               <u>Current PSF Token Price:</u>
-              <br />${this.round3(this.state.usdPerToken)}{' '}
+            </PriceP>
+            <PriceP>
+              ${this.round3(this.state.usdPerToken)}{' '}
               <Span1>USD per Token</Span1>
-              <br />
+            </PriceP>
+            <PriceP>
               {this.round8(this.state.usdPerToken / this.state.usdPerBCH)}{' '}
               <Span1>BCH per token</Span1>
-              <br />
+            </PriceP>
+            <PriceP>
               {this.round8(this.state.usdPerBCH / this.state.usdPerToken)}{' '}
               <Span1>tokens per BCH</Span1>
-              <br />
             </PriceP>
           </div>
         </div>

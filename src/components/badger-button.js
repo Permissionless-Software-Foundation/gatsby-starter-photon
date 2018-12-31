@@ -4,14 +4,19 @@
 
 import React from 'react'
 import { Line } from 'react-chartjs-2'
+import styled from 'styled-components'
+
+const StyledButton = styled.a`
+  margin-bottom: 25px;
+`
 
 class BadgerButton extends React.Component {
   render() {
-    return <a href="#" className="button special badger-button"
+    return <StyledButton href="#" className="button special badger-button"
       onClick={this.invokeBadger}
       data-to="bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al">
         Buy $1 of PSF Tokens
-      </a>
+      </StyledButton>
   }
 
   // Invoke the Badger Wallet when the button is clicked.
