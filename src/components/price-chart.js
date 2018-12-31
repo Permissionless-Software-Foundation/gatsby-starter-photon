@@ -2,7 +2,8 @@ import React from 'react'
 import { Line } from 'react-chartjs-2'
 import initChartData from './init-chart-data.js'
 
-const SERVER = 'http://localhost:5000'
+//const SERVER = 'http://localhost:5000'
+const SERVER = 'https://psfoundation.co'
 
 const initialState = {
   labels: initChartData.xData2,

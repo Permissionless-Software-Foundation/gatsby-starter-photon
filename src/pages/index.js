@@ -110,7 +110,10 @@ class Homepage extends React.Component {
               </p>
               <p>
                 The liquidity app will send tokens if it recieves BCH. It will
-                send BCH if it recieves tokens. Refresh the window to get the
+                send BCH if it recieves tokens.
+                It will take two (2) block confirmations before your tokens
+                appear in your wallet.
+                Refresh the window to get the
                 most up-to-date exchange rate.
               </p>
               <p>
