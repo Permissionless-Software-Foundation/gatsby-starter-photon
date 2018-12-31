@@ -106,16 +106,18 @@ class Homepage extends React.Component {
                 <a href="https://badgerwallet.cash/" target="_blank">
                   Badger Wallet
                 </a>{' '}
-                browser extension and click the button.
+                browser extension and click the Buy button.
               </p>
               <p>
                 The liquidity app will send tokens if it recieves BCH. It will
-                send BCH if it recieves tokens. Refresh the window to get the
-                most up-to-date exchange rate.
+                send BCH if it recieves tokens.
+                It will take two (2) block confirmations before tokens will
+                appear in your wallet.
+                Refresh the window to get the most up-to-date exchange rate.
               </p>
               <p>
                 <b>
-                  <u>Warning:</u>
+                  <u>Warning:</u>{' '}
                 </b>
                 Do not send BCH to the app address unless you are using a
                 Wormhole token-aware wallet.
@@ -132,7 +134,7 @@ class Homepage extends React.Component {
               </header>
               <p>
                 The PSF token will be used to fund the following open source
-                projects.
+                projects, with more on the way.
               </p>
             </div>
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
 
-import PriceChart from "./price-chart"
+import PriceChart from './price-chart'
 
 const SERVER = 'http://localhost:5000'
 
@@ -19,10 +19,10 @@ class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      usdPerToken: 1.1,
-      usdPerBCH: 200,
-      bchBalance: 27.6292729518912,
-      tokenBalance: 500
+      usdPerToken: 0,
+      usdPerBCH: 0,
+      bchBalance: 0,
+      tokenBalance: 0,
     }
   }
 
@@ -39,10 +39,16 @@ class Header extends React.Component {
 
           <div className="col-5">
             <PriceP>
-              <u>Current PSF Token Price:</u><br />
-              ${this.round3(this.state.usdPerToken)} <Span1>USD per Token</Span1><br />
-              {this.round8(this.state.usdPerToken/this.state.usdPerBCH)} <Span1>BCH per token</Span1><br />
-              {this.round8(this.state.usdPerBCH/this.state.usdPerToken)} <Span1>tokens per BCH</Span1><br />
+              <u>Current PSF Token Price:</u>
+              <br />${this.round3(this.state.usdPerToken)}{' '}
+              <Span1>USD per Token</Span1>
+              <br />
+              {this.round8(this.state.usdPerToken / this.state.usdPerBCH)}{' '}
+              <Span1>BCH per token</Span1>
+              <br />
+              {this.round8(this.state.usdPerBCH / this.state.usdPerToken)}{' '}
+              <Span1>tokens per BCH</Span1>
+              <br />
             </PriceP>
           </div>
         </div>
@@ -58,37 +64,45 @@ class Header extends React.Component {
       </section>
     )
   }
-/*
+
   // React Lifecycle - component has mounted.
   async componentDidMount() {
-    // Update the component state with token price from the server.
-    await this.getPrice()
-
+    try {
+      // Update the component state with token price from the server.
+      await this.getPrice()
+    } catch (err) {
+      console.log(`Error in Header.js/componentDidMounts(): `, err)
+    }
   }
 
-  async getPrice () {
-    const resp = await fetch(`${SERVER}/price`)
-    const body = await resp.json()
+  async getPrice() {
+    try {
+      const resp = await fetch(`${SERVER}/price`)
+      const body = await resp.json()
 
-    this.setState(prevState => ({
-      usdPerToken: body.usdPerToken,
-      usdPerBCH: body.usdPerBCH,
-      bchBalance: body.bchBalance,
-      tokenBalance: body.tokenBalance,
-    }))
+      this.setState(prevState => ({
+        usdPerToken: body.usdPerToken,
+        usdPerBCH: body.usdPerBCH,
+        bchBalance: body.bchBalance,
+        tokenBalance: body.tokenBalance,
+      }))
 
-    console.log(`usdPerToken: ${this.state.usdPerToken}`)
-    console.log(`usdPerBCH: ${this.state.usdPerBCH}`)
-    console.log(`bchBalance: ${this.state.bchBalance}`)
-    console.log(`tokenBalance: ${this.state.tokenBalance}`)
+      console.log(`usdPerToken: ${this.state.usdPerToken}`)
+      console.log(`usdPerBCH: ${this.state.usdPerBCH}`)
+      console.log(`bchBalance: ${this.state.bchBalance}`)
+      console.log(`tokenBalance: ${this.state.tokenBalance}`)
+    } catch (err) {
+      console.log(`Error in Header.js/getPrice()`)
+      throw err
+    }
   }
-*/
+
   // Round a number to 8 decimal places, the standard used for Bitcoin.
-  round8 (numIn) {
+  round8(numIn) {
     return Math.floor(numIn * 100000000) / 100000000
   }
 
-  round3 (numIn) {
+  round3(numIn) {
     return Math.floor(numIn * 1000) / 1000
   }
 }
