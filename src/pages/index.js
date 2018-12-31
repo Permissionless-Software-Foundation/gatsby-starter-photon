@@ -80,14 +80,33 @@ class Homepage extends React.Component {
                           </center>
                         </div>
                         <div className="col-6">
-                            <header className="major">
-                                <h2>
-                                  Buy or Sell PSF Tokens
-                                </h2>
-                            </header>
-                            <p>Adipiscing a commodo ante nunc accumsan interdum mi ante adipiscing. A nunc lobortis non nisl amet vis volutpat aclacus nascetur ac non. Lorem curae eu ante amet sapien in tempus ac. Adipiscing id accumsan adipiscing ipsum.</p>
-                            <p>Blandit faucibus proin. Ac aliquam integer adipiscing enim non praesent vis commodo nunc phasellus cubilia ac risus accumsan. Accumsan blandit. Lobortis phasellus non lobortis dit varius mi varius accumsan lobortis. Blandit ante aliquam lacinia lorem lobortis semper morbi col faucibus vitae integer placerat accumsan orci eu mi odio tempus adipiscing adipiscing adipiscing curae consequat feugiat etiam dolore.</p>
-                            <p>Adipiscing a commodo ante nunc accumsan interdum mi ante adipiscing. A nunc lobortis non nisl amet vis volutpat aclacus nascetur ac non. Lorem curae eu ante amet sapien in tempus ac. Adipiscing id accumsan adipiscing ipsum.</p>
+                          <header className="major">
+                              <h2>
+                                Buy or Sell PSF Tokens
+                              </h2>
+                          </header>
+                          <p>
+                            You can buy or sell tokens by sending BCH or tokens
+                            to the liquidity app. Scan the QR code with a
+                            Wormhole token-aware BCH wallet, like
+                            the <a href="https://wallet.wormhole.cash/" target="_blank">
+                            Wormhole Android wallet
+                            </a>. Or install
+                            the <a href="https://badgerwallet.cash/" target="_blank">
+                            Badger Wallet
+                            </a> browser extension and click the button.
+                          </p>
+                          <p>
+                            The liquidity app will send tokens if it recieves
+                            BCH. It will send BCH if it recieves tokens.
+                            Refresh the window to get the most up-to-date exchange
+                            rate.
+                          </p>
+                          <p>
+                            <b><u>Warning:</u></b> Do not send BCH to the app address
+                            unless you are using a Wormhole token-aware wallet.
+                          </p>
+
                         </div>
                     </div>
                 </section>
