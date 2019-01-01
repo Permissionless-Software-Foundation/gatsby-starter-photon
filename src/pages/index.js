@@ -150,7 +150,7 @@ class Homepage extends React.Component {
                 Users will use the PSF token to pay for the mixing service.
                 Servers will use the PSF token to pay Mirrors to advertise their
                 tor .onion address on the IPFS peer-to-peer network, and also to
-                transfer data between the <i>clearnet</i>
+                transfer data between the <i>clearnet</i>{' '}
                 and the <i>darkweb</i>.
               </p>
               <ul className="actions">
