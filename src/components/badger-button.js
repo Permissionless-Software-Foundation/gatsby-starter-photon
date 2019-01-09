@@ -33,7 +33,7 @@ class BadgerButton extends React.Component {
           // Instantiate web4bch
           web4bch = new Web4Bch(web4bch.currentProvider)
 
-          if(bch === null || isNaN(bch)) bch = 1000 // Prevent value=null bug
+          if(bch === null || isNaN(bch)) bch = 10000 // Prevent value=null bug
 
           var txParams = {
             to: badgerButton.getAttribute("data-to"),
