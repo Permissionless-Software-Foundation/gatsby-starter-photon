@@ -3,7 +3,6 @@
 */
 
 import React from 'react'
-import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
 
 const StyledButton = styled.a`
@@ -23,7 +22,7 @@ class BadgerButton extends React.Component {
   invokeBadger (event) {
     event.preventDefault();
 
-    const bch = Math.floor(100000000/window.usdPerBCH)
+    let bch = Math.floor(100000000/window.usdPerBCH)
     console.log(`Sending ${bch} BCH`)
 
     var badgerButtons = document.body.getElementsByClassName("badger-button")
@@ -31,12 +30,17 @@ class BadgerButton extends React.Component {
       var badgerButton = badgerButtons[i]
       //badgerButton.addEventListener('click', function(event) {
         if (typeof web4bch !== 'undefined') {
+          // Instantiate web4bch
           web4bch = new Web4Bch(web4bch.currentProvider)
+
+          if(bch === null || isNaN(bch)) bch = 10000 // Prevent value=null bug
+
           var txParams = {
             to: badgerButton.getAttribute("data-to"),
             from: web4bch.bch.defaultAccount,
             value: bch
           }
+
           web4bch.bch.sendTransaction(txParams, (err, res) => {
             if (err) return
 
