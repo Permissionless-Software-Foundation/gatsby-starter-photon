@@ -2,9 +2,10 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
-import Layout from '../components/layout'
+//import Layout from '../components/layout'
 import PriceChart from '../components/price-chart'
 import Logs from '../components/logs'
+import WarningDiv from '../components/warning'
 
 import pic01 from '../assets/images/pic01.jpg'
 import pic02 from '../assets/images/pic02.jpg'
@@ -48,9 +49,13 @@ class Homepage extends React.Component {
 
     return (
       <div className={`body`}>
+        <WarningDiv />
         <Helmet title={siteTitle} />
 
+
+
         <section id="two" className="main style2">
+
           <div className="grid-wrapper">
             <div className="col-8">
               <center>

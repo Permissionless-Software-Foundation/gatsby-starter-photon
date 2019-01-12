@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import Layout from '../components/layout'
 import BadgerButton from '../components/badger-button'
+import WarningDiv from '../components/warning'
 
 import pic01 from '../assets/images/pic01.jpg'
 import pic02 from '../assets/images/pic02.jpg'
@@ -28,6 +29,7 @@ class Homepage extends React.Component {
     return (
       <Layout>
         <Helmet title={siteTitle} />
+        <WarningDiv />
         <section id="one" className="main style1">
           <div className="grid-wrapper">
             <div className="col-6">
