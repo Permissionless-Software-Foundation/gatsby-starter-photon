@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import PriceChart from './price-chart'
 
-const SERVER = 'http://localhost:5000'
+const SERVER = 'http://localhost:5100'
 
 const PriceP = styled.p`
   text-align: left;
