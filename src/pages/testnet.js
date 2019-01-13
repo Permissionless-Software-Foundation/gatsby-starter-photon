@@ -13,7 +13,7 @@ import pic03 from '../assets/images/pic03.jpg'
 import pic04 from '../assets/images/pic04.jpg'
 import qrcode from '../assets/images/testnet-addr.png'
 
-const SERVER = 'http://localhost:5100'
+const SERVER = 'https://psfoundation.co/test'
 
 const BchAddress = styled.p`
   text-align: center;
@@ -61,7 +61,7 @@ class Homepage extends React.Component {
               <center>
                 <h2>Testnet</h2>
               </center>
-              <PriceChart server="http://localhost:5100" />
+              <PriceChart server="http://psfoundation.co/test" />
 
               <table>
                 <tr>
