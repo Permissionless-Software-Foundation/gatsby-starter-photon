@@ -65,20 +65,22 @@ class Homepage extends React.Component {
               <PriceChart server="https://psfoundation.co/test" />
 
               <table>
-                <tr>
-                  <td>
-                    ${this.round3(this.state.usdPerToken)}{' '}
-                    <Span1>USD per Token</Span1>
-                  </td>
-                  <td>
-                    {this.round8(this.state.usdPerToken / this.state.usdPerBCH)}{' '}
-                    <Span1>BCH per token</Span1>
-                  </td>
-                  <td>
-                    {this.round8(this.state.usdPerBCH / this.state.usdPerToken)}{' '}
-                    <Span1>tokens per BCH</Span1>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>
+                      ${this.round3(this.state.usdPerToken)}{' '}
+                      <Span1>USD per Token</Span1>
+                    </td>
+                    <td>
+                      {this.round8(this.state.usdPerToken / this.state.usdPerBCH)}{' '}
+                      <Span1>BCH per token</Span1>
+                    </td>
+                    <td>
+                      {this.round8(this.state.usdPerBCH / this.state.usdPerToken)}{' '}
+                      <Span1>tokens per BCH</Span1>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
 
             </div>

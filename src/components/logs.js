@@ -25,7 +25,7 @@ class Logs extends React.Component {
     // Update the logs periodically.
     setInterval(() => {
       this.getLogs()
-    }, 10000)
+    }, 15000)
 
     // Initialize the logs
     this.getLogs()
@@ -53,7 +53,8 @@ class Logs extends React.Component {
           const parsedLog = JSON.parse(thisLog)
           logStr += `${parsedLog.message}\n`
         } catch(err) {
-          console.log(`Error parsing: ${thisLog}`)
+          //console.log(`Error parsing at index ${i}: `, err)
+          //console.log(`logAry[i]: ${logAry[i]}`)
           continue
         }
       }
@@ -71,8 +72,12 @@ class Logs extends React.Component {
 
   // Scrolls the textarea to the bottom, most recent logs.
   scrollToBottom() {
-    const textarea = document.getElementById('logTextArea');
-    textarea.scrollTop = textarea.scrollHeight;
+    // The below syntax fixes a bug in 'npm build':
+    // https://github.com/gatsbyjs/gatsby/issues/309
+    if(typeof document !== 'undefined') {
+      const textarea = document.getElementById('logTextArea');
+      textarea.scrollTop = textarea.scrollHeight;
+    }
   }
 }
 
