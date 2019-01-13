@@ -237,7 +237,7 @@ class PriceChart extends React.Component {
   // Get the current price from the server.
   async getPrice() {
     try {
-      const resp = await fetch(`${SERVER}:${this.props.port}/price`)
+      const resp = await fetch(`${this.props.server}/price`)
       const body = await resp.json()
 
       this.setState(prevState => ({

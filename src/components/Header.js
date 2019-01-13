@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 import PriceChart from './price-chart'
 
-
 //const SERVER = 'http://localhost:5000'
 const SERVER = 'https://psfoundation.co'
 
@@ -36,7 +35,11 @@ class Header extends React.Component {
           <div className="col-7">
             <div>
               <h2>App Exchange Rate & Balances</h2>
+<<<<<<< HEAD
               <PriceChart port="5000" />
+=======
+              <PriceChart server="http://localhost:5000" />
+>>>>>>> master
             </div>
           </div>
 
