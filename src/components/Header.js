@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import PriceChart from './price-chart'
 
-const SERVER = 'http://localhost:5100'
+const SERVER = 'http://localhost:5000'
 
 const PriceP = styled.p`
   text-align: left;
@@ -33,7 +33,7 @@ class Header extends React.Component {
           <div className="col-7">
             <div>
               <h2>App Exchange Rate & Balances</h2>
-              <PriceChart />
+              <PriceChart server="http://localhost:5000" />
             </div>
           </div>
 

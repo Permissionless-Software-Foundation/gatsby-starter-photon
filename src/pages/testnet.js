@@ -61,7 +61,7 @@ class Homepage extends React.Component {
               <center>
                 <h2>Testnet</h2>
               </center>
-              <PriceChart />
+              <PriceChart server="http://localhost:5100" />
 
               <table>
                 <tr>

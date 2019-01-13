@@ -2,7 +2,7 @@ import React from 'react'
 import { Line } from 'react-chartjs-2'
 import initChartData from './init-chart-data.js'
 
-const SERVER = 'http://localhost:5100'
+//const SERVER = 'http://localhost'
 
 const initialState = {
   labels: initChartData.xData2,
@@ -224,7 +224,7 @@ class PriceChart extends React.Component {
   // Get the current price from the server.
   async getPrice() {
     try {
-      const resp = await fetch(`${SERVER}/price`)
+      const resp = await fetch(`${this.props.server}/price`)
       const body = await resp.json()
 
       this.setState(prevState => ({
