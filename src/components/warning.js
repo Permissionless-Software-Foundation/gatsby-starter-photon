@@ -26,7 +26,7 @@ class WarningDiv extends React.Component {
           tokens. <a href="https://docs.google.com/document/d/1UgX_h4TB9CtxxabseC7lRGwQlCsNikPo7DJUlIrNv0k/edit?usp=sharing" target="_blank">Read the business plan</a> to
           learn about the economic
           model. Developers can explore
-          a <a href="/testnet">testnet version of the liquidty app here</a>.
+          a <a href="/testnet/">testnet version of the liquidity app here</a>.
         </p>
       </MainDiv>
     )
