@@ -4,7 +4,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import fetch from 'node-fetch'
+import fetch from 'isomorphic-fetch'
 
 const SERVER = 'https://psfoundation.co/test'
 

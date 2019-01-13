@@ -1,7 +1,7 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 import initChartData from './init-chart-data.js'
-import fetch from 'node-fetch'
+import fetch from 'isomorphic-fetch'
 
 const SERVER = 'https://psfoundation.co'
 
