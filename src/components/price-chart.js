@@ -2,7 +2,6 @@ import React from 'react'
 import { Line } from 'react-chartjs-2'
 import initChartData from './init-chart-data.js'
 
-//const SERVER = 'http://localhost:5000'
 const SERVER = 'https://psfoundation.co'
 
 const initialState = {
@@ -165,6 +164,17 @@ const options = {
 class PriceChart extends React.Component {
   //displayName: 'Graph',
 
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
+  render() {
+    return (
+      <Line data={this.state.chartData} options={this.state.chartOptions} />
+    )
+  }
+
   componentWillMount() {
     //this.setState(initialState)
     this.setState(prevState => ({
@@ -227,7 +237,7 @@ class PriceChart extends React.Component {
   // Get the current price from the server.
   async getPrice() {
     try {
-      const resp = await fetch(`${SERVER}/price`)
+      const resp = await fetch(`${SERVER}:${this.props.port}/price`)
       const body = await resp.json()
 
       this.setState(prevState => ({
@@ -273,11 +283,7 @@ class PriceChart extends React.Component {
     return { bestX, bestY }
   }
 
-  render() {
-    return (
-      <Line data={this.state.chartData} options={this.state.chartOptions} />
-    )
-  }
+
 }
 
 export default PriceChart
