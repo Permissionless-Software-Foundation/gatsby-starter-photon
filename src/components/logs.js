@@ -21,12 +21,12 @@ class Logs extends React.Component {
     this.state = {
       logStr: "Loading logs..."
     }
-
+/*
     // Update the logs periodically.
     setInterval(() => {
       this.getLogs()
     }, 15000)
-
+*/
     // Initialize the logs
     this.getLogs()
   }
