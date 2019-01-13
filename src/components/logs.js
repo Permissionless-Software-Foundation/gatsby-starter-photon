@@ -4,8 +4,9 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import fetch from 'node-fetch'
 
-const SERVER = 'http://localhost:5100'
+const SERVER = 'https://psfoundation.co/test'
 
 const TextArea = styled.textarea`
   font-size: 14px;

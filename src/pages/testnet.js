@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
+import fetch from 'node-fetch'
 
 //import Layout from '../components/layout'
 import PriceChart from '../components/price-chart'
