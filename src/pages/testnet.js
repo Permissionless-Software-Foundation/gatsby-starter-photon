@@ -54,10 +54,7 @@ class Homepage extends React.Component {
         <WarningDiv />
         <Helmet title={siteTitle} />
 
-
-
         <section id="two" className="main style2">
-
           <div className="grid-wrapper">
             <div className="col-8">
               <center>
@@ -122,6 +119,10 @@ class Homepage extends React.Component {
             <div className="col-12">
               <header className="major">
                 <h2>Logs</h2>
+                <p>
+                  Reminder: It takes 2 block confirmations before Wormhole tokens
+                  will appear in your wallet.
+                </p>
               </header>
               <Logs />
             </div>
