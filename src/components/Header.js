@@ -35,7 +35,7 @@ class Header extends React.Component {
           <div className="col-7">
             <div>
               <h2>App Exchange Rate & Balances</h2>
-              <PriceChart server="http://psfoundation.co" />
+              <PriceChart server="https://psfoundation.co" />
             </div>
           </div>
 
