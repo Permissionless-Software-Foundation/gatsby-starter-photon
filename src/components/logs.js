@@ -74,10 +74,12 @@ class Logs extends React.Component {
   scrollToBottom() {
     // The below syntax fixes a bug in 'npm build':
     // https://github.com/gatsbyjs/gatsby/issues/309
+    /*
     if(typeof document !== 'undefined') {
       const textarea = document.getElementById('logTextArea');
       textarea.scrollTop = textarea.scrollHeight;
     }
+    */
   }
 }
 
