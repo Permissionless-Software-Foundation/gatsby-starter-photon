@@ -50,8 +50,12 @@ class Logs extends React.Component {
       for(let i=0; i < logAry.length; i++) {
         const thisLog = logAry[i]
         try {
+          // Convert the log JSON string to an object.
           const parsedLog = JSON.parse(thisLog)
-          logStr += `${parsedLog.message}\n`
+
+          // Only display the 'info' level of logs.
+          if(parsedLog.level === "info")
+            logStr += `${parsedLog.message}\n`
         } catch(err) {
           //console.log(`Error parsing at index ${i}: `, err)
           //console.log(`logAry[i]: ${logAry[i]}`)
@@ -79,7 +83,7 @@ class Logs extends React.Component {
       const textarea = document.getElementById('logTextArea');
       textarea.scrollTop = textarea.scrollHeight;
     }
-    
+
   }
 }
 
