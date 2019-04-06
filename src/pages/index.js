@@ -145,14 +145,14 @@ class Homepage extends React.Component {
             </div>
 
             <div className="col-6">
-              <h3>Consolidating CoinJoin</h3>
+              <h3>Anonymous Bitcoin: Consolidating CoinJoin</h3>
               <p>
                 Consolidating CoinJoin is a peer-to-peer mixing service that
                 brings privacy and fungability to the Bitcoin Cash network.
                 Users will use the PSF token to pay for the mixing service.
                 Servers will use the PSF token to pay Mirrors to advertise their
                 tor .onion address on the IPFS peer-to-peer network, and also to
-                transfer data between the <i>clearnet</i>
+                transfer data between the <i>clearnet</i>{' '}
                 and the <i>darkweb</i>.
               </p>
               <ul className="actions">

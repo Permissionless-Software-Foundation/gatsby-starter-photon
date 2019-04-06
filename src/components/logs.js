@@ -4,8 +4,9 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import fetch from 'isomorphic-fetch'
 
-const SERVER = 'http://localhost:5100'
+const SERVER = 'https://psfoundation.co/test'
 
 const TextArea = styled.textarea`
   font-size: 14px;
@@ -24,7 +25,7 @@ class Logs extends React.Component {
     // Update the logs periodically.
     setInterval(() => {
       this.getLogs()
-    }, 10000)
+    }, 15000)
 
     // Initialize the logs
     this.getLogs()
@@ -49,10 +50,15 @@ class Logs extends React.Component {
       for(let i=0; i < logAry.length; i++) {
         const thisLog = logAry[i]
         try {
+          // Convert the log JSON string to an object.
           const parsedLog = JSON.parse(thisLog)
-          logStr += `${parsedLog.message}\n`
+
+          // Only display the 'info' level of logs.
+          if(parsedLog.level === "info")
+            logStr += `${parsedLog.message}\n`
         } catch(err) {
-          console.log(`Error parsing: ${thisLog}`)
+          //console.log(`Error parsing at index ${i}: `, err)
+          //console.log(`logAry[i]: ${logAry[i]}`)
           continue
         }
       }
@@ -70,8 +76,14 @@ class Logs extends React.Component {
 
   // Scrolls the textarea to the bottom, most recent logs.
   scrollToBottom() {
-    const textarea = document.getElementById('logTextArea');
-    textarea.scrollTop = textarea.scrollHeight;
+    // The below syntax fixes a bug in 'npm build':
+    // https://github.com/gatsbyjs/gatsby/issues/309
+
+    if(typeof document !== 'undefined') {
+      const textarea = document.getElementById('logTextArea');
+      textarea.scrollTop = textarea.scrollHeight;
+    }
+
   }
 }
 

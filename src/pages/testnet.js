@@ -1,6 +1,8 @@
 import React from 'react'
+import "../assets/scss/main.scss";
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
+import fetch from 'isomorphic-fetch'
 
 //import Layout from '../components/layout'
 import PriceChart from '../components/price-chart'
@@ -13,7 +15,7 @@ import pic03 from '../assets/images/pic03.jpg'
 import pic04 from '../assets/images/pic04.jpg'
 import qrcode from '../assets/images/testnet-addr.png'
 
-const SERVER = 'http://localhost:5100'
+const SERVER = 'https://psfoundation.co/test'
 
 const BchAddress = styled.p`
   text-align: center;
@@ -52,32 +54,31 @@ class Homepage extends React.Component {
         <WarningDiv />
         <Helmet title={siteTitle} />
 
-
-
         <section id="two" className="main style2">
-
           <div className="grid-wrapper">
             <div className="col-8">
               <center>
                 <h2>Testnet</h2>
               </center>
-              <PriceChart server="http://localhost:5100" />
+              <PriceChart server="https://psfoundation.co/test" />
 
               <table>
-                <tr>
-                  <td>
-                    ${this.round3(this.state.usdPerToken)}{' '}
-                    <Span1>USD per Token</Span1>
-                  </td>
-                  <td>
-                    {this.round8(this.state.usdPerToken / this.state.usdPerBCH)}{' '}
-                    <Span1>BCH per token</Span1>
-                  </td>
-                  <td>
-                    {this.round8(this.state.usdPerBCH / this.state.usdPerToken)}{' '}
-                    <Span1>tokens per BCH</Span1>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>
+                      ${this.round3(this.state.usdPerToken)}{' '}
+                      <Span1>USD per Token</Span1>
+                    </td>
+                    <td>
+                      {this.round8(this.state.usdPerToken / this.state.usdPerBCH)}{' '}
+                      <Span1>BCH per token</Span1>
+                    </td>
+                    <td>
+                      {this.round8(this.state.usdPerBCH / this.state.usdPerToken)}{' '}
+                      <Span1>tokens per BCH</Span1>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
 
             </div>
@@ -118,6 +119,10 @@ class Homepage extends React.Component {
             <div className="col-12">
               <header className="major">
                 <h2>Logs</h2>
+                <p>
+                  Reminder: It takes 2 block confirmations before Wormhole tokens
+                  will appear in your wallet.
+                </p>
               </header>
               <Logs />
             </div>

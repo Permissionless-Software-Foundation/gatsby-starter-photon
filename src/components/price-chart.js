@@ -1,8 +1,9 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 import initChartData from './init-chart-data.js'
+import fetch from 'isomorphic-fetch'
 
-//const SERVER = 'http://localhost'
+const SERVER = 'https://psfoundation.co'
 
 const initialState = {
   labels: initChartData.xData2,
@@ -164,6 +165,17 @@ const options = {
 class PriceChart extends React.Component {
   //displayName: 'Graph',
 
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
+  render() {
+    return (
+      <Line data={this.state.chartData} options={this.state.chartOptions} />
+    )
+  }
+
   componentWillMount() {
     //this.setState(initialState)
     this.setState(prevState => ({
@@ -172,12 +184,14 @@ class PriceChart extends React.Component {
     }))
 
     // Adjust chart settings based on screen width.
-    const screenWidth = window.innerWidth
-    console.log(`Window width: ${screenWidth}`)
-    if(screenWidth < 800) {
-      options.scales.xAxes[0].scaleLabel.fontSize = 14
-      options.scales.yAxes[0].scaleLabel.fontSize = 14
-      options.scales.yAxes[1].scaleLabel.fontSize = 14
+    if (typeof window !== 'undefined') {
+      const screenWidth = window.innerWidth
+      console.log(`Window width: ${screenWidth}`)
+      if (screenWidth < 800) {
+        options.scales.xAxes[0].scaleLabel.fontSize = 14
+        options.scales.yAxes[0].scaleLabel.fontSize = 14
+        options.scales.yAxes[1].scaleLabel.fontSize = 14
+      }
     }
   }
 
@@ -270,11 +284,7 @@ class PriceChart extends React.Component {
     return { bestX, bestY }
   }
 
-  render() {
-    return (
-      <Line data={this.state.chartData} options={this.state.chartOptions} />
-    )
-  }
+
 }
 
 export default PriceChart

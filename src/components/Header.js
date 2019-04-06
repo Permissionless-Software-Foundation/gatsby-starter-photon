@@ -1,10 +1,13 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
+import fetch from 'isomorphic-fetch'
 
 import PriceChart from './price-chart'
 
-const SERVER = 'http://localhost:5000'
+//const SERVER = 'http://localhost:5000'
+const SERVER = 'https://psfoundation.co'
+
 
 const PriceP = styled.p`
   text-align: left;
@@ -33,7 +36,7 @@ class Header extends React.Component {
           <div className="col-7">
             <div>
               <h2>App Exchange Rate & Balances</h2>
-              <PriceChart server="http://localhost:5000" />
+              <PriceChart server="https://psfoundation.co" />
             </div>
           </div>
 
