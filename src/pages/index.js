@@ -110,7 +110,8 @@ class Homepage extends React.Component {
                 <a href="https://badgerwallet.cash/" target="_blank">
                   Badger Wallet
                 </a>{' '}
-                browser extension and click the Buy button.
+                browser extension, or click the Buy or Sell buttons to trade
+                $1 USD worth of tokens.
               </p>
               <p>
                 The liquidity app will send tokens if it recieves BCH. It will
@@ -124,7 +125,7 @@ class Homepage extends React.Component {
                   <u>Warning:</u>{' '}
                 </b>
                 Do not send BCH to the app address unless you are using a
-                SLP token-aware wallet.
+                SLP token-aware wallet. Non-aware wallets can destroy the tokens.
               </p>
             </div>
           </div>
