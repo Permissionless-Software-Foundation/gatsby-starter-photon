@@ -30,6 +30,10 @@ class Header extends React.Component {
   }
 
   render() {
+    // Update the global window object with the USD per Token price.
+    if(window)
+      window.usdPerToken = this.state.usdPerToken
+
     return (
       <section id="header">
         <div className="grid-wrapper">

@@ -3,7 +3,8 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
 import Layout from '../components/layout'
-import BadgerButton from '../components/badger-button'
+import BuyBadgerButton from '../components/buy-badger-button'
+import SellBadgerButton from '../components/sell-badger-button'
 import WarningDiv from '../components/warning'
 
 import pic01 from '../assets/images/pic01.jpg'
@@ -94,7 +95,8 @@ class Homepage extends React.Component {
                 <BchAddress>
                   bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al
                 </BchAddress>
-                <BadgerButton />
+                <BuyBadgerButton />
+                <SellBadgerButton />
               </center>
             </div>
             <div className="col-6">
@@ -103,12 +105,8 @@ class Homepage extends React.Component {
               </header>
               <p>
                 You can buy or sell tokens by sending BCH or tokens to the
-                liquidity app. Scan the QR code with a Wormhole token-aware BCH
-                wallet, like the{' '}
-                <a href="https://wallet.wormhole.cash/" target="_blank">
-                  Wormhole Android wallet
-                </a>
-                . Or install the{' '}
+                liquidity app. Scan the QR code with a SLP token-aware BCH
+                wallet, like {' '}
                 <a href="https://badgerwallet.cash/" target="_blank">
                   Badger Wallet
                 </a>{' '}
@@ -126,7 +124,7 @@ class Homepage extends React.Component {
                   <u>Warning:</u>{' '}
                 </b>
                 Do not send BCH to the app address unless you are using a
-                Wormhole token-aware wallet.
+                SLP token-aware wallet.
               </p>
             </div>
           </div>

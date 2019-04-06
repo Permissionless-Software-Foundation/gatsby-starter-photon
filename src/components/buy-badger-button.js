@@ -1,5 +1,5 @@
 /*
-  Add a $1 badger button.
+  Badger button to buy $1 USD of PSF tokens.
 */
 
 import React from 'react'
@@ -9,7 +9,7 @@ const StyledButton = styled.a`
   margin-bottom: 25px;
 `
 
-class BadgerButton extends React.Component {
+class BuyBadgerButton extends React.Component {
   render() {
     return <StyledButton href="#" className="button special badger-button"
       onClick={this.invokeBadger}
@@ -60,4 +60,4 @@ class BadgerButton extends React.Component {
   }
 }
 
-export default BadgerButton
+export default BuyBadgerButton
