@@ -21,14 +21,14 @@ class Logs extends React.Component {
     this.state = {
       logStr: "Loading logs..."
     }
-
+/*
     // Update the logs periodically.
     setInterval(() => {
       this.getLogs()
     }, 15000)
-
+*/
     // Initialize the logs
-    this.getLogs()
+    //this.getLogs()
   }
 
   render() {
@@ -36,7 +36,7 @@ class Logs extends React.Component {
     return <TextArea id="logTextArea" readOnly value={this.state.logStr}>
     </TextArea>
   }
-
+/*
   // Retrieves logs from the server and updates the state.
   async getLogs() {
     try {
@@ -73,7 +73,7 @@ class Logs extends React.Component {
       console.log(`Error in getLogs: `, err)
     }
   }
-
+*/
   // Scrolls the textarea to the bottom, most recent logs.
   scrollToBottom() {
     // The below syntax fixes a bug in 'npm build':
