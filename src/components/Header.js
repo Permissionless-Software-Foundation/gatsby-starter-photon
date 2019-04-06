@@ -39,7 +39,7 @@ class Header extends React.Component {
 
           <div className="col-5">
             <PriceP>
-              <u>Current PSF Token Price:</u>
+              <u>*Current PSF Token Price:</u>
             </PriceP>
             <PriceP>
               ${this.round3(this.state.usdPerToken)}{' '}
@@ -53,6 +53,11 @@ class Header extends React.Component {
               {this.round8(this.state.usdPerBCH / this.state.usdPerToken)}{' '}
               <Span1>tokens per BCH</Span1>
             </PriceP>
+            <br />
+            <p><small>
+              *Based on 1 BCH. Non-linear price slippage will result in slightly
+              different exchange rate.
+            </small></p>
           </div>
         </div>
         <div className="inner">
