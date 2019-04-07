@@ -1,6 +1,12 @@
 import React from 'react'
 import Layout from '../components/layout'
 import Helmet from 'react-helmet'
+import styled from 'styled-components'
+
+const ListItem = styled.li`
+  margin: 40px;
+  font-size: 24px;
+`
 
 class Contact extends React.Component {
   render() {
@@ -12,10 +18,50 @@ class Contact extends React.Component {
         <h1>Contact</h1>
         <p>
           The Permissionless Software Foundation is more of a loose network of
-          libertarian cypherpunks who love to discuss technology, as opposed
-          to a conventional organization. Most of the action happens in our
-          chat room. Jump in and join the conversation!
+          libertarian cypherpunks who love to discuss technology, as opposed to
+          a conventional organization. Most of the action happens in our chat
+          rooms. Jump in and join the conversation!
         </p>
+        <br />
+        <ul>
+          <ListItem>
+            <a href="https://chat.psfoundation.cash" target="_blank">
+              PSF Chat Server
+            </a> -
+            The majority of communication takes place on our unencrypted chat
+            server. This is a tor-friendly chat server that is hosted and controlled
+            by the Foundation. This is the place to ask questions and get to know
+            the community.
+          </ListItem>
+
+          <ListItem>
+            <a href="https://www.loomio.org/g/r3dO4k5Z/permissionless-software-foundation"
+            target="_blank">PSF Loomio Group</a> -
+            Non-technical, governance discussion and decision making takes place
+            on Loomio, a platform for democratic governance.
+          </ListItem>
+
+          <ListItem>
+            Encrypted Chat - Members of the Foundation uses {' '}
+            <a href="https://pidgin.im/" target="_blank">Pidgin</a> instant
+            messanger along with the <a href="https://otr.cypherpunks.ca/"
+            target="_blank">OTR</a> plugin for end-to-end encryption. This
+            software is automatically installed in
+            <a href="https://tails.boum.org/" target="_blank">Tails</a> OS.{' '}
+            <a href="https://www.youtube.com/watch?v=HsSssbs-Sso" target="_blank">
+            Here is a video explaining the software</a>. You can chat with members
+            of the foundation by asking them for their XMPP account name.
+          </ListItem>
+
+          <ListItem>
+            <a href="https://ovn.psfoundation.cash" target="_blank">Work Logs</a> -
+            The PS Foundation is an Open Value Network (OVN). All work authorized
+            by the foundation is documented in our OVN software platform, a
+            transparent accounting system. Completed work will be compensated in
+            PSF tokens.
+          </ListItem>
+        </ul>
+
       </Layout>
     )
   }
