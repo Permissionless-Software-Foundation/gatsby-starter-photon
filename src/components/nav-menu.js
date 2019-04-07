@@ -1,17 +1,24 @@
 import React from 'react'
 import { Link } from "gatsby";
+import styled from 'styled-components'
+
+const NavItem = styled.li`
+  list-style-type: none;
+  padding-right: 5px;
+  padding-left: 5px;
+`
 
 class NavMenu extends React.Component {
   render() {
     return (
       <nav style={{ display: 'flex', flex: 1 }}>
-        <li style={{ listStyleType: 'none' }}>
+        <NavItem>
           <Link to="/">Home</Link>
-        </li>
+        </NavItem>
 
-        <li style={{ listStyleType: 'none' }}>
+        <NavItem>
           <Link to="/contact">Contact</Link>
-        </li>
+        </NavItem>
       </nav>
     )
   }

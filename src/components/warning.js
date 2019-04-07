@@ -17,16 +17,11 @@ class WarningDiv extends React.Component {
   render() {
     return (<MainDiv>
         <p>
-          <b>Warning:</b> Do not invest money. This is not a real business. This
-          is an experimental demonstration.
-        </p>
-        <p>
-          This demo illustrates the token liquidity app and a new economic model
-          for utility
-          tokens. <a href="https://docs.google.com/document/d/1UgX_h4TB9CtxxabseC7lRGwQlCsNikPo7DJUlIrNv0k/edit?usp=sharing" target="_blank">Read the business plan</a> to
-          learn about the economic
-          model. Developers can explore
-          a <a href="/testnet/">testnet version of the liquidity app here</a>.
+          <b>Warning:</b> The PSF token should not be considered an investment.
+          It's an experimental business model for tracking and rewarding effort
+          in open source projects. It's value is intended to be transactional
+          in nature,
+          and any long-term value is highly speculative.
         </p>
       </MainDiv>
     )

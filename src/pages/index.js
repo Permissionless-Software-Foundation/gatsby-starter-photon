@@ -6,6 +6,7 @@ import Layout from '../components/layout'
 import BuyBadgerButton from '../components/buy-badger-button'
 import SellBadgerButton from '../components/sell-badger-button'
 import WarningDiv from '../components/warning'
+import PriceSection from '../components/price-section'
 
 import pic01 from '../assets/images/pic01.jpg'
 import pic02 from '../assets/images/pic02.jpg'
@@ -30,6 +31,7 @@ class Homepage extends React.Component {
     return (
       <Layout>
         <Helmet title={siteTitle} />
+        <PriceSection />
         <WarningDiv />
         <section id="one" className="main style1">
           <div className="grid-wrapper">
