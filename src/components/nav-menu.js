@@ -19,6 +19,10 @@ class NavMenu extends React.Component {
         <NavItem>
           <Link to="/contact">Contact</Link>
         </NavItem>
+
+        <NavItem>
+          <Link to="/roadmap">Roadmap</Link>
+        </NavItem>
       </nav>
     )
   }

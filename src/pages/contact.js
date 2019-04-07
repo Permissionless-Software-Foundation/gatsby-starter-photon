@@ -35,6 +35,15 @@ class Contact extends React.Component {
           </ListItem>
 
           <ListItem>
+            <a href="https://groups.google.com/d/forum/permissionless-software-foundation"
+            target="_blank">Mailing List</a> - Email is still one of the best ways
+            for organizations to communicate over the internet. Sign up for our
+            mailing list to stay up-to-date on the latest news. If Google's sign-up
+            security is frustrating you, submit your email address on chat room
+            above and we'll add you to the mailing list manually.
+          </ListItem>
+
+          <ListItem>
             <a href="https://www.loomio.org/g/r3dO4k5Z/permissionless-software-foundation"
             target="_blank">PSF Loomio Group</a> -
             Non-technical, governance discussion and decision making takes place
