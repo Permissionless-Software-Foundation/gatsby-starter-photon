@@ -3,6 +3,7 @@ import "../assets/scss/main.scss";
 
 import Header from "./Header";
 import Footer from "./Footer";
+import NavMenu from "./nav-menu"
 
 class Template extends React.Component {
     constructor(props) {
@@ -29,9 +30,10 @@ class Template extends React.Component {
 
         return (
             <div className={`body ${this.state.loading}`}>
-                <Header />
-                {children}
-                <Footer />
+              <NavMenu />
+              <Header />
+              {children}
+              <Footer />
             </div>
         );
     }
