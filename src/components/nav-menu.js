@@ -8,6 +8,10 @@ class NavMenu extends React.Component {
         <li style={{ listStyleType: 'none' }}>
           <Link to="/">Home</Link>
         </li>
+
+        <li style={{ listStyleType: 'none' }}>
+          <Link to="/contact">Contact</Link>
+        </li>
       </nav>
     )
   }
