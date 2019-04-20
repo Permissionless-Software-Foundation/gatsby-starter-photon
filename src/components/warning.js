@@ -11,6 +11,7 @@ const StyledButton = styled.a`
 
 const MainDiv = styled.section`
   background-color: #ffff00;
+  padding: 50px;
 `
 
 class WarningDiv extends React.Component {

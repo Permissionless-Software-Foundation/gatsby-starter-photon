@@ -14,7 +14,7 @@ class SellBadgerButton extends React.Component {
     return <StyledButton href="#" className="button special badger-button"
       onClick={this.invokeBadger}
       data-to="bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al">
-        Sell $1 of PSF Tokens
+        Sell $0.10 of PSF Tokens
       </StyledButton>
   }
 
@@ -29,6 +29,7 @@ class SellBadgerButton extends React.Component {
       tokens = 1000 / window.usdPerToken
       tokens = Math.floor(tokens)
       tokens = tokens / 1000
+      tokens = tokens / 10 // From $1 to $0.10
     }
 
     console.log(`Selling ${tokens} tokens.`)
