@@ -11,7 +11,7 @@ const StyledButton = styled.a`
 
 class SellBadgerButton extends React.Component {
   render() {
-    return <StyledButton href="#" className="button special badger-button"
+    return <StyledButton href="#" className="button special badger-button-sell"
       onClick={this.invokeBadger}
       data-to="bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al">
         Sell $0.10 of PSF Tokens
@@ -37,7 +37,7 @@ class SellBadgerButton extends React.Component {
     //let bch = Math.floor(100000000/window.usdPerBCH)
     //console.log(`Sending ${bch} BCH`)
 
-    var badgerButtons = document.body.getElementsByClassName("badger-button")
+    var badgerButtons = document.body.getElementsByClassName("badger-button-sell")
     for (var i = 0; i < badgerButtons.length; i++) {
       var badgerButton = badgerButtons[i]
       //badgerButton.addEventListener('click', function(event) {

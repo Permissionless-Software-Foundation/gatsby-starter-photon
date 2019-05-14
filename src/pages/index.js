@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import Layout from '../components/layout'
 import BuyBadgerButton from '../components/buy-badger-button'
-//import SellBadgerButton from '../components/sell-badger-button'
+import SellBadgerButton from '../components/sell-badger-button'
 import WarningDiv from '../components/warning'
 import PriceSection from '../components/price-section'
 
@@ -98,6 +98,7 @@ class Homepage extends React.Component {
                   bitcoincash:qzl6k0wvdd5ky99hewghqdgfj2jhcpqnfq8xtct0al
                 </BchAddress>
                 <BuyBadgerButton />
+                <SellBadgerButton />
               </center>
             </div>
             <div className="col-6">
